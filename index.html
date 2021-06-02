@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+  <div id="app">
+    <el-input v-model="input" placeholder="请输入价格"></el-input>
+    <el-button v-on:click="calculateData">计算</el-button>
+    <p>价格: {{input}}</p>
+  <template>
+    <el-table
+      :data="tableData1"
+      style="width: 100%"
+      >
+      <el-table-column
+        prop="name"
+        label="产品"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="inch1"
+        label="1寸管"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="pipe6"
+        label="6寸管"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="gangjin"
+        label="钢筋">
+      </el-table-column>
+      <el-table-column
+        prop="peijian"
+        label="配件和螺丝">
+      </el-table-column>
+      <el-table-column
+        prop="gongqian"
+        label="工钱">
+      </el-table-column>
+      <el-table-column
+        prop="penqi"
+        label="喷漆加工钱">
+      </el-table-column>
+      <el-table-column
+        prop="sunhao"
+        label="损耗">
+      </el-table-column>
+      <el-table-column
+        prop="rengliao"
+        label="扔料">
+      </el-table-column>
+      <el-table-column
+        prop="gangbancao"
+        label="钢板槽">
+      </el-table-column>
+      <el-table-column
+        prop="bigua"
+        label="壁挂加料铲">
+      </el-table-column>
+      <el-table-column
+        prop="zhutietui"
+        label="铸铁腿">
+      </el-table-column>
+      <el-table-column
+        prop="total"
+        label="合计">
+      </el-table-column>
+
+    </el-table>
+  </template>
+
+<template>
+    <el-table
+      :data="tableData2"
+      style="width: 100%">
+      <el-table-column
+        prop="name"
+        label="产品"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="inch1"
+        label="1寸管"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="pipe6"
+        label="6分管"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="pipe4"
+        label="4分管"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="peijian"
+        label="配件和螺丝">
+      </el-table-column>
+      <el-table-column
+        prop="gongqian"
+        label="工钱">
+      </el-table-column>
+      <el-table-column
+        prop="penqi"
+        label="喷漆加工钱">
+      </el-table-column>
+      <el-table-column
+        prop="sunhao"
+        label="损耗">
+      </el-table-column>
+      <el-table-column
+        prop="rengliao"
+        label="扔料">
+      </el-table-column>
+      <el-table-column
+        prop="gangbancao"
+        label="钢板槽">
+      </el-table-column>
+      <el-table-column
+        prop="total"
+        label="合计">
+      </el-table-column>
+
+    </el-table>
+  </template>
+
+<template>
+    <el-table
+      :data="tableData3"
+      style="width: 100%">
+      <el-table-column
+        prop="name"
+        label="产品"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="pipe6"
+        label="6分管"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="gangjin"
+        label="钢筋"
+        width="100">
+      </el-table-column>
+      <el-table-column
+        prop="peijian"
+        label="配件和螺丝">
+      </el-table-column>
+      <el-table-column
+        prop="gongqian"
+        label="工钱">
+      </el-table-column>
+      <el-table-column
+        prop="penqi"
+        label="喷漆加工钱">
+      </el-table-column>
+      <el-table-column
+        prop="sunhao"
+        label="损耗">
+      </el-table-column>
+      <el-table-column
+        prop="rengliao"
+        label="扔料">
+      </el-table-column>
+      <el-table-column
+        prop="baoyuliaocao"
+        label="保育料槽">
+      </el-table-column>
+      <el-table-column
+        prop="zhutietui"
+        label="铸铁腿">
+      </el-table-column>
+      <el-table-column
+        prop="total"
+        label="合计">
+      </el-table-column>
+    </el-table>
+  </template>
+
+
+
+  </div>
+</body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      methods: {
+            calculateData() {
+                    input = this.input
+                    console.log(input)
+                    this.tableData1 = [{
+                          name: '产保一体成本',
+                          inch1: input*45,
+                          pipe6: input*49,
+                          gangjin: input*29,
+                          peijian: 100,
+                          gongqian: 80,
+                          penqi: 30,
+                          sunhao: 120,
+                          rengliao: 15,
+                          gangbancao: 60,
+                          bigua: 10,
+                          zhutietui: 95,
+                          total: input*45+input*49+input*29+100+80+30+120+15+60+10+95
+                          }, {
+                          name: '产床',
+                          inch1: input*44,
+                          pipe6: input*47,
+                          gangjin: input*23,
+                          peijian: 100,
+                          gongqian: 80,
+                          penqi: 30,
+                          sunhao: 120,
+                          rengliao: 15,
+                          gangbancao: 60,
+                          bigua: 10,
+                          zhutietui: 95,
+                          total: input*44+input*47+input*23+100+80+30+120+15+60+10+95
+                          }, {
+                          name: '单休产床',
+                          inch1: input*22,
+                          pipe6: input*31,
+                          gangjin: input*18,
+                          peijian: 50,
+                          gongqian: 51,
+                          penqi: 18,
+                          sunhao: 80,
+                          rengliao: 10,
+                          gangbancao: 30,
+                          bigua: 6,
+                          zhutietui: 60,
+                          total: input*22+input*31+input*18+50+51+18+80+10+30+6+60
+                          }, {
+                          name: '产床落地17猪位',
+                          inch1: input*22,
+                          pipe6: input*10,
+                          gangjin: input*1.5,
+                          peijian: 25,
+                          gongqian: 25,
+                          penqi: 10,
+                          sunhao: 40,
+                          rengliao: 5,
+                          gangbancao: 30,
+                          bigua: 0,
+                          zhutietui: 0,
+                          total: input*22+input*10+input*1.5+25+25+10+40+5+30
+                          }
+                          ]
+                      this.tableData2 = [{
+                            name: '70定位栏10猪位',
+                            inch1: input*66,
+                            pipe6: input*150,
+                            pipe4: input*16,
+                            peijian: 130,
+                            gongqian: 155,
+                            penqi: 50,
+                            sunhao: 175,
+                            rengliao: 35,
+                            gangbancao: 300,
+                            total: input*66+input*150+input*16+130+155+50+175+35+300
+                            }, {
+                            name: '60定位栏10猪位',
+                            inch1: input*66,
+                            pipe6: input*141,
+                            pipe4: input*14,
+                            peijian: 130,
+                            gongqian: 155,
+                            penqi: 50,
+                            sunhao: 175,
+                            rengliao: 35,
+                            gangbancao: 300,
+                            total: input*66+input*141+input*14+130+155+50+175+35+300
+                            }
+                            ],
+                          this.tableData3 = [{
+                            name: '保育床',
+                            pipe6: input*43,
+                            gangjin: input*34,
+                            peijian: 40,
+                            gongqian: 43,
+                            penqi: 20,
+                            sunhao: 90,
+                            rengliao: 10,
+                            baoyuliaocao: 105,
+                            zhutietui: 85,
+                            total: input*43+input*34+40+43+20+90+10+105+85
+                            }
+                            ]
+                    }
+                },
+      data: function() {
+                this.input = 0
+                this.calculateData()
+                return {
+                      input: input,
+                      tableData1: this.tableData1,
+                      tableData2: this.tableData2,
+                      tableData3: this.tableData3
+                      }
+      },
+
+    })
+  </script>
+</html>
