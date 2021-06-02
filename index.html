@@ -7,9 +7,11 @@
 </head>
 <body>
   <div id="app">
-    <el-input v-model="input" placeholder="请输入价格"></el-input>
+    <el-input v-model="price_inch1" placeholder="请输入1寸管价格"></el-input>
+    <el-input v-model="price_pipe4" placeholder="请输入4分管价格"></el-input>
+    <el-input v-model="price_pipe6" placeholder="请输入6分管价格"></el-input>
+    <el-input v-model="price_gangjin" placeholder="请输入钢筋价格"></el-input>
     <el-button v-on:click="calculateData">计算</el-button>
-    <p>价格: {{input}}</p>
   <template>
     <el-table
       :data="tableData1"
@@ -27,7 +29,7 @@
       </el-table-column>
       <el-table-column
         prop="pipe6"
-        label="6寸管"
+        label="6分管"
         width="100">
       </el-table-column>
       <el-table-column
@@ -197,13 +199,15 @@
       el: '#app',
       methods: {
             calculateData() {
-                    input = this.input
-                    console.log(input)
+                    price_inch1 = this.price_inch1
+                    price_pipe4 = this.price_pipe4
+                    price_pipe6 = this.price_pipe6
+                    price_gangjin = this.price_gangjin
                     this.tableData1 = [{
                           name: '产保一体成本',
-                          inch1: input*45,
-                          pipe6: input*49,
-                          gangjin: input*29,
+                          inch1: price_inch1*45,
+                          pipe6: price_pipe6*49,
+                          gangjin: price_gangjin*29,
                           peijian: 100,
                           gongqian: 80,
                           penqi: 30,
@@ -212,12 +216,12 @@
                           gangbancao: 60,
                           bigua: 10,
                           zhutietui: 95,
-                          total: input*45+input*49+input*29+100+80+30+120+15+60+10+95
+                          total: price_inch1*45+price_pipe6*49+price_gangjin*29+100+80+30+120+15+60+10+95
                           }, {
                           name: '产床',
-                          inch1: input*44,
-                          pipe6: input*47,
-                          gangjin: input*23,
+                          inch1: price_inch1*44,
+                          pipe6: price_pipe6*47,
+                          gangjin: price_gangjin*23,
                           peijian: 100,
                           gongqian: 80,
                           penqi: 30,
@@ -226,12 +230,12 @@
                           gangbancao: 60,
                           bigua: 10,
                           zhutietui: 95,
-                          total: input*44+input*47+input*23+100+80+30+120+15+60+10+95
+                          total: price_inch1*44+price_pipe6*47+price_gangjin*23+100+80+30+120+15+60+10+95
                           }, {
                           name: '单休产床',
-                          inch1: input*22,
-                          pipe6: input*31,
-                          gangjin: input*18,
+                          inch1: price_inch1*22,
+                          pipe6: price_pipe6*31,
+                          gangjin: price_gangjin*18,
                           peijian: 50,
                           gongqian: 51,
                           penqi: 18,
@@ -240,12 +244,12 @@
                           gangbancao: 30,
                           bigua: 6,
                           zhutietui: 60,
-                          total: input*22+input*31+input*18+50+51+18+80+10+30+6+60
+                          total: price_inch1*22+price_pipe6*31+price_gangjin*18+50+51+18+80+10+30+6+60
                           }, {
                           name: '产床落地17猪位',
-                          inch1: input*22,
-                          pipe6: input*10,
-                          gangjin: input*1.5,
+                          inch1: price_inch1*22,
+                          pipe6: price_pipe6*10,
+                          gangjin: price_gangjin*1.5,
                           peijian: 25,
                           gongqian: 25,
                           penqi: 10,
@@ -254,39 +258,39 @@
                           gangbancao: 30,
                           bigua: 0,
                           zhutietui: 0,
-                          total: input*22+input*10+input*1.5+25+25+10+40+5+30
+                          total: price_inch1*22+price_pipe6*10+price_gangjin*1.5+25+25+10+40+5+30
                           }
                           ]
                       this.tableData2 = [{
                             name: '70定位栏10猪位',
-                            inch1: input*66,
-                            pipe6: input*150,
-                            pipe4: input*16,
+                            inch1: price_inch1*66,
+                            pipe6: price_pipe6*150,
+                            pipe4: price_pipe4*16,
                             peijian: 130,
                             gongqian: 155,
                             penqi: 50,
                             sunhao: 175,
                             rengliao: 35,
                             gangbancao: 300,
-                            total: input*66+input*150+input*16+130+155+50+175+35+300
+                            total: price_inch1*66+price_pipe6*150+price_pipe4*16+130+155+50+175+35+300
                             }, {
                             name: '60定位栏10猪位',
-                            inch1: input*66,
-                            pipe6: input*141,
-                            pipe4: input*14,
+                            inch1: price_inch1*66,
+                            pipe6: price_pipe6*141,
+                            pipe4: price_pipe4*14,
                             peijian: 130,
                             gongqian: 155,
                             penqi: 50,
                             sunhao: 175,
                             rengliao: 35,
                             gangbancao: 300,
-                            total: input*66+input*141+input*14+130+155+50+175+35+300
+                            total: price_inch1*66+price_pipe6*141+price_pipe4*14+130+155+50+175+35+300
                             }
                             ],
                           this.tableData3 = [{
                             name: '保育床',
-                            pipe6: input*43,
-                            gangjin: input*34,
+                            pipe6: price_pipe6*43,
+                            gangjin: price_gangjin*34,
                             peijian: 40,
                             gongqian: 43,
                             penqi: 20,
@@ -294,16 +298,17 @@
                             rengliao: 10,
                             baoyuliaocao: 105,
                             zhutietui: 85,
-                            total: input*43+input*34+40+43+20+90+10+105+85
+                            total: price_pipe6*43+price_gangjin*34+40+43+20+90+10+105+85
                             }
                             ]
                     }
                 },
       data: function() {
-                this.input = 0
-                this.calculateData()
                 return {
-                      input: input,
+                      price_inch1: '',
+                      price_pipe4: '',
+                      price_pipe6: '',
+                      price_gangjin: '',
                       tableData1: this.tableData1,
                       tableData2: this.tableData2,
                       tableData3: this.tableData3
